@@ -1,0 +1,32 @@
+{
+  "name": "wejyasig-backend",
+  "version": "1.0.0",
+  "description": "Proyecto de SIG",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yomiguel/WEJYASIG-backend.git"
+  },
+  "keywords": [
+    "SIG",
+    "Air",
+    "PM25"
+  ],
+  "author": "Luis Miguel J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yomiguel/WEJYASIG-backend/issues"
+  },
+  "homepage": "https://github.com/Yomiguel/WEJYASIG-backend#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
