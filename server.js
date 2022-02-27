@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
-const FormData = require("form-data");
-const { calculateAQI } = require("./aqi");
+const { calculateAQI, getColor } = require("./aqi");
+const kriging = require("./kriging");
+const generatedCoords = require("./data/puntos.json");
 
 const app = express();
 
@@ -19,24 +20,6 @@ const fetchStationData = async (id) => {
   const response = await fetch(url);
   const allData = await response.json();
   return allData;
-};
-
-const fetchAllStationsAQI = async () => {
-  const URL = "https://api.waqi.info/api/feed/@242959/aqi.json";
-  const payload = {
-    token: " b3a69385843ab9120ecaaf749649b0cff3501534",
-    id: "242959",
-  };
-
-  const data = await fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    body: new FormData(payload),
-  });
-
-  return data;
 };
 
 app.get("/api/station/:id", async (req, res) => {
@@ -59,14 +42,7 @@ app.get("/api/station/:id", async (req, res) => {
 });
 
 app.get("/api/stations", async (req, res) => {
-  const colors = ["red", "orange", "yellow", "green"];
-  const stationIds = [
-    "244456",
-    "249298",
-    "244447",
-    "242959",
-    "13298378", // Non-existent station
-  ];
+  const stationIds = ["244456", "249298", "244447", "242959"];
 
   const allStationsData = await Promise.all(
     stationIds.map((station) => fetchStationData(station))
@@ -76,26 +52,61 @@ app.get("/api/stations", async (req, res) => {
     (station) => station.status === "ok" && station.data
   );
 
-  const formattedStationsData = filteredStationsData.map(({ data, meta }) => {
-    console.log(Number(data.pm25.pop().mean));
-    console.log(calculateAQI(Number(data.pm25.pop().mean)));
+  const formattedStationsData = filteredStationsData.map(
+    ({ data, meta, loiq }) => {
+      const aqi = calculateAQI(Number(data.pm25.pop().mean));
+      const date = new Date(data.pm25.pop().time).toUTCString();
 
+      return {
+        name: loiq.display_name,
+        aqi,
+        pm25: {
+          mean: data.pm25.pop().mean,
+        },
+        time: date,
+        location: meta.geo,
+        color: getColor(aqi),
+      };
+    }
+  );
+
+  ////////////////////////////////////////////////////////////////
+
+  const aqiValues = formattedStationsData.map((station) => station.aqi);
+  const latitudes = formattedStationsData.map((station) => station.location[0]);
+  const longitudes = formattedStationsData.map(
+    (station) => station.location[1]
+  );
+  const model = "exponential";
+  const sigma2 = 0;
+  const alpha = 25;
+  const variogram = kriging.train(
+    aqiValues,
+    latitudes,
+    longitudes,
+    model,
+    sigma2,
+    alpha
+  );
+
+  console.log(variogram);
+
+  ////////////////////////////////////////////////////////////////
+  const generatedStationCoords = generatedCoords.stations;
+  const generatedStationData = generatedStationCoords.map((station) => {
+    const predictedAqi = Math.round(
+      kriging.predict(station.lat, station.lon, variogram)
+    );
     return {
-      pm25: {
-        mean: data.pm25.pop().mean,
-        time: new Date(data.pm25.pop().time).toUTCString(),
-        aqi: calculateAQI(Number(data.pm25.pop().mean)),
-      },
-      location: meta.geo,
-      color: colors[Math.floor(Math.random() * 4)],
+      aqi: predictedAqi,
+      location: [station.lat, station.lon],
+      color: getColor(predictedAqi),
     };
   });
 
-  res.json(formattedStationsData);
+  res.json({
+    variogram,
+    main: formattedStationsData,
+    generated: generatedStationData,
+  });
 });
-
-/*https://airnet.waqi.info/airnet/feed/hourly/244456
-https://airnet.waqi.info/airnet/feed/hourly/249298
-https://airnet.waqi.info/airnet/feed/hourly/244447
-https://airnet.waqi.info/airnet/feed/hourly/242959
-https://api.waqi.info/feed/cali/?token=b3a69385843ab9120ecaaf749649b0cff3501534*/
