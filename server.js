@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
 const FormData = require("form-data");
+const { calculateAQI } = require("./aqi");
 
 const app = express();
 
@@ -37,11 +38,6 @@ const fetchAllStationsAQI = async () => {
 
   return data;
 };
-
-app.get("/api", async (req, res) => {
-  const aqi = await fetchAllStationsAQI();
-  res.json(aqi);
-});
 
 app.get("/api/station/:id", async (req, res) => {
   const { id } = req.params;
@@ -80,14 +76,20 @@ app.get("/api/stations", async (req, res) => {
     (station) => station.status === "ok" && station.data
   );
 
-  const formattedStationsData = filteredStationsData.map(({ data, meta }) => ({
-    pm25: {
-      mean: data.pm25.pop().mean,
-      time: data.pm25.pop().time,
-    },
-    location: meta.geo,
-    color: colors[Math.floor(Math.random() * 4)],
-  }));
+  const formattedStationsData = filteredStationsData.map(({ data, meta }) => {
+    console.log(Number(data.pm25.pop().mean));
+    console.log(calculateAQI(Number(data.pm25.pop().mean)));
+
+    return {
+      pm25: {
+        mean: data.pm25.pop().mean,
+        time: new Date(data.pm25.pop().time).toUTCString(),
+        aqi: calculateAQI(Number(data.pm25.pop().mean)),
+      },
+      location: meta.geo,
+      color: colors[Math.floor(Math.random() * 4)],
+    };
+  });
 
   res.json(formattedStationsData);
 });
