@@ -20,6 +20,24 @@ const calculateAQI = (concentration) => {
   }
 };
 
+const calculateConcentration = (AQI) => {
+  for (let element in concentrationRange) {
+    const index = Number(element);
+    const maxAQI = aqiRange[index + 1];
+    const minAQI = aqiRange[index];
+    const maxConcentration = concentrationRange[index + 1];
+    const minConcentration = concentrationRange[index];
+
+    if (minAQI < AQI && AQI <= maxAQI) {
+      return (
+        ((AQI - maxAQI) * (maxConcentration - minConcentration)) /
+          (maxAQI - minAQI) +
+        minConcentration
+      ).toFixed(1);
+    }
+  }
+};
+
 const getColor = (aqi) => {
   if (0 < aqi && aqi < 50) {
     return colors[0];
