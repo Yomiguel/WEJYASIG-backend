@@ -30,7 +30,7 @@ const calculateConcentration = (aqi) => {
 
     if (minAQI < aqi && aqi <= maxAQI) {
       return (
-        ((aqi - maxAQI) * (maxConcentration - minConcentration)) /
+        ((aqi - minAQI) * (maxConcentration - minConcentration)) /
           (maxAQI - minAQI) +
         minConcentration
       ).toFixed(2);
