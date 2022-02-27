@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
-const { calculateAQI, getColor } = require("./aqi");
+const { calculateAQI, calculateConcentration, getColor } = require("./aqi");
 const kriging = require("./kriging");
 const generatedCoords = require("./data/puntos.json");
 
@@ -77,7 +77,7 @@ app.get("/api/stations", async (req, res) => {
   const longitudes = formattedStationsData.map(
     (station) => station.location[1]
   );
-  const model = "exponential";
+  const model = "spherical";
   const sigma2 = 0;
   const alpha = 25;
   const variogram = kriging.train(
@@ -89,8 +89,6 @@ app.get("/api/stations", async (req, res) => {
     alpha
   );
 
-  console.log(variogram);
-
   ////////////////////////////////////////////////////////////////
   const generatedStationCoords = generatedCoords.stations;
   const generatedStationData = generatedStationCoords.map((station) => {
@@ -99,13 +97,15 @@ app.get("/api/stations", async (req, res) => {
     );
     return {
       aqi: predictedAqi,
+      pm25: {
+        mean: calculateConcentration(predictedAqi),
+      },
       location: [station.lat, station.lon],
       color: getColor(predictedAqi),
     };
   });
 
   res.json({
-    variogram,
     main: formattedStationsData,
     generated: generatedStationData,
   });
