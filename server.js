@@ -74,7 +74,7 @@ app.post("/api/signup", (req, res) => {
       username,
       password,
     });
-    res.redirect("http://127.0.0.1:5500/geovisor.html");
+    res.redirect("http://127.0.0.1:5000/geovisor.html");
   } catch (error) {
     console.log(error);
   }
