@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
+const mongoose = require("mongoose");
+const { userSchema } = require("./db/schema");
+require("dotenv").config();
 
 const {
   trainKrigingModel,
@@ -8,9 +12,17 @@ const {
   getPredictedStations,
 } = require("./controllers/stationsController");
 
+const mongoDB = mongoose.createConnection(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const User = mongoDB.model("user", userSchema);
+
 const app = express();
 
-app.use(cors("*"));
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = 5000;
 
@@ -24,6 +36,10 @@ const fetchStationData = async (id) => {
   const allData = await response.json();
   return allData;
 };
+
+app.get("/signup", (req, res) => {
+  res.sendFile(__dirname + "/view/signup.html");
+});
 
 app.get("/api/station/:id", async (req, res) => {
   const { id } = req.params;
@@ -48,4 +64,18 @@ app.get("/api/stations", async (req, res) => {
     main: formattedStationsData,
     generated: generatedStations,
   });
+});
+
+app.post("/api/signup", (req, res) => {
+  const { username, password } = req.body;
+  console.log(username, password);
+  try {
+    User.create({
+      username,
+      password,
+    });
+    res.redirect("http://127.0.0.1:5500/geovisor.html");
+  } catch (error) {
+    console.log(error);
+  }
 });
