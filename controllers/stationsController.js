@@ -1,9 +1,10 @@
-const kriging = require("../kriging");
+/*const kriging = require("../kriging");*/
 const { calculateAQI, calculateConcentration, getColor } = require("../aqi");
 
 const generatedCoords = require("../data/puntos.json");
 
-const trainKrigingModel = (stations) => {
+//legacy
+/*const trainKrigingModel = (stations) => {
   const aqiValues = stations.map((station) => station.aqi);
   const latitudes = stations.map((station) => station.location[0]);
   const longitudes = stations.map((station) => station.location[1]);
@@ -20,9 +21,28 @@ const trainKrigingModel = (stations) => {
   );
 
   return variogram;
-};
+};*/
 
 const formatStationsData = (stations) => {
+  const formattedStationsData = stations.map(({ coord, list }) => {
+    const pm25 = list[0].components.pm2_5;
+    const aqi = calculateAQI(Number(pm25));
+
+    return {
+      data: {
+        pm25: pm25,
+        aqi: aqi
+      },
+      location: coord,
+      color: getColor(aqi)
+    };
+  });
+
+  return formattedStationsData;
+};
+
+//legacy
+/*const formatStationsData = (stations) => {
   const filteredStationsData = stations.filter(
     (station) => station.status === "ok" && station.data
   );
@@ -47,9 +67,10 @@ const formatStationsData = (stations) => {
   );
 
   return formattedStationsData;
-};
+};*/
 
-const getPredictedStations = (variogram) => {
+//legacy
+/*const getPredictedStations = (variogram) => {
   const generatedStationCoords = generatedCoords.stations;
   const generatedStationData = generatedStationCoords.map((stationCoords) => {
     const predictedAqi = kriging.predict(
@@ -68,6 +89,9 @@ const getPredictedStations = (variogram) => {
   });
 
   return generatedStationData;
-};
+};*/
 
-module.exports = { trainKrigingModel, formatStationsData, getPredictedStations };
+//legacy
+/*module.exports = { trainKrigingModel, formatStationsData, getPredictedStations };*/
+
+module.exports = { formatStationsData };

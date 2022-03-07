@@ -31,7 +31,7 @@ app.listen(port, function () {
   console.log("Your app is listening on port " + port);
 });
 
-//legacy 
+//legacy
 /*const fetchStationData = async (id) => {
   const url = `https://airnet.waqi.info/airnet/feed/hourly/${id}`;
   const response = await fetch(url);
@@ -80,8 +80,26 @@ app.get("/api/stations", async (req, res) => {
   const generatedStationCoords = generatedCoords.stations;
 
   const allStationsData = await Promise.all(
+    generatedStationCoords.map((station) =>
+      fetchStationData(station.lat, station.lon)
+    )
+  );
+
+  const formattedStationsData = formatStationsData(allStationsData);
+
+  res.json({
+    main: formattedStationsData,
+  });
+});
+
+//legacy
+/*app.get("/api/stations", async (req, res) => {
+  const generatedStationCoords = generatedCoords.stations;
+
+  const allStationsData = await Promise.all(
     generatedStationCoords.map((station) => fetchStationData(station.lat, station.lon))
   );
+
 
   const formattedStationsData = formatStationsData(allStationsData);
   const variogram = trainKrigingModel(formattedStationsData);
@@ -91,7 +109,7 @@ app.get("/api/stations", async (req, res) => {
     main: formattedStationsData,
     generated: generatedStations,
   });
-});
+});*/
 
 app.post("/api/signup", (req, res) => {
   const { username, password } = req.body;
