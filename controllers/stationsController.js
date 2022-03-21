@@ -1,20 +1,21 @@
 const { calculateAQI, calculateConcentration, getColor } = require("../aqi");
 
-const generatedCoords = require("../data/puntos.json");
+const stationsIds = require("../data/stationsId.json");
 
 const formatStationsData = (stations) => {
-  const formattedStationsData = stations.map(({ coord, list }) => {
-    const pm25 = list[0].components.pm2_5;
-    const aqi = calculateAQI(Number(pm25));
+  const filteredStationsData = stations.filter(
+    (station) =>
+      station.id == stationsIds.stations[0].id ||
+      station.id == stationsIds.stations[1].id ||
+      station.id == stationsIds.stations[2].id ||
+      station.id == stationsIds.stations[3].id ||
+      station.id == stationsIds.stations[4].id
+  );
 
-    return {
-      data: {
-        pm25: pm25,
-        aqi: aqi
-      },
-      location: coord,
-      color: getColor(aqi)
-    };
+  const formattedStationsData = filteredStationsData.map(({ measurements }) => {
+    const pm25 = measurements
+    console.log(pm25);
+     return pm25;
   });
 
   return formattedStationsData;

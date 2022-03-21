@@ -2,19 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-const mongoose = require("mongoose");
-const { userSchema } = require("./db/schema");
-const generatedCoords = require("./data/puntos.json");
+const pgp = require("pg-promise")();
+const db = pgp(
+  `postgres://${process.env.USER}:${process.env.PASSWORD}:5432/${process.env.DB}`
+);
 require("dotenv").config();
 
 const { formatStationsData } = require("./controllers/stationsController");
-
-const mongoDB = mongoose.createConnection(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const User = mongoDB.model("user", userSchema);
 
 const app = express();
 
@@ -27,8 +21,8 @@ app.listen(port, function () {
   console.log("Your app is listening on port " + port);
 });
 
-const fetchStationData = async (lat, lon) => {
-  const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=86ff4517b525c7fb1aedd26ebd17d04d`;
+const fetchStationData = async () => {
+  const url = "http://api.canair.io:8080/dwc/stations";
   const response = await fetch(url);
   const allData = await response.json();
   return allData;
@@ -39,13 +33,7 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/api/stations", async (req, res) => {
-  const generatedStationCoords = generatedCoords.stations;
-
-  const allStationsData = await Promise.all(
-    generatedStationCoords.map((station) =>
-      fetchStationData(station.lat, station.lon)
-    )
-  );
+  const allStationsData = await fetchStationData();
 
   const formattedStationsData = formatStationsData(allStationsData);
 
