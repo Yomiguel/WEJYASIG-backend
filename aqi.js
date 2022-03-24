@@ -10,12 +10,12 @@ const calculateAQI = (concentration) => {
     const maxConcentration = concentrationRange[index + 1];
     const minConcentration = concentrationRange[index];
 
-    if (minConcentration < concentration && concentration <= maxConcentration) {
+    if (minConcentration <= concentration && concentration < maxConcentration) {
       return (
         ((maxAQI - minAQI) / (maxConcentration - minConcentration)) *
           (concentration - minConcentration) +
         minAQI
-      );
+      ).toFixed(0);
     }
   }
 };

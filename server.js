@@ -2,13 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-const pgp = require("pg-promise")();
-const db = pgp(
-  `postgres://${process.env.USER}:${process.env.PASSWORD}:5432/${process.env.DB}`
-);
+const { queryDb, updateDb } = require("./data_base/managment_data_base");
+const router = express.Router;
+
+
 require("dotenv").config();
 
 const { formatStationsData } = require("./controllers/stationsController");
+const { Column } = require("pg-promise");
 
 const app = express();
 
@@ -36,22 +37,16 @@ app.get("/api/stations", async (req, res) => {
   const allStationsData = await fetchStationData();
 
   const formattedStationsData = formatStationsData(allStationsData);
-
+  const sendData2Db = formattedStationsData.map(data => {
+    console.log('U_U');
+    updateDb("estaciones", "pm25", data["pm2.5"], "cod", data.station);
+    updateDb("estaciones", "aqi", data.aqi, "cod", data.station);
+  });
   res.json({
     main: formattedStationsData,
   });
 });
 
-app.post("/api/signup", (req, res) => {
-  const { username, password } = req.body;
-  console.log(username, password);
-  try {
-    User.create({
-      username,
-      password,
-    });
-    res.redirect("http://127.0.0.1:5000/geovisor.html");
-  } catch (error) {
-    console.log(error);
-  }
-});
+
+//updateDb("estaciones", "aqi", 15, "cod", `D29TTGOT7A0DDA`);
+//queryDb("pm25", "estaciones", "cod", `'D29TTGOT7D4D7A'`);

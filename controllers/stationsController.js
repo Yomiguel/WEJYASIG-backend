@@ -19,15 +19,13 @@ const formatStationsData = (stations) => {
 
   const formattedStationsData = filteredStationsData.map(({ measurementDeterminedBy, measurementValue }) => {
     const pm25Value = measurementValue;
-    const stationsId = measurementDeterminedBy;
+    const stationsId = measurementDeterminedBy.replace("CanAirIO station ", "");
     return {
       "pm2.5": pm25Value,
-      "aqi": Number(calculateAQI(pm25Value).toFixed(0)),
+      "aqi": Number(calculateAQI(pm25Value)),
       "station": stationsId 
-
     };
   });
-  console.log(formattedStationsData);
   return formattedStationsData;
 };
 
