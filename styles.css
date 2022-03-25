@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Tinos", serif;
+  line-height: 21px;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #555e5e;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.form-page-container {
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.general-background {
+  background: url("./imagenes/bg2.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.all-container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.back-container {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  backdrop-filter: blur(10px);
+  background-color: rgba(197, 127, 35, 0.1);
+}
+
+.back-container div {
+  margin: 100px, 40px;
+  color: rgba(0, 0, 0, 1);
+  transition: all 700ms;
+}
+
+.back-container div p,
+.back-container div button {
+  margin-top: 30px;
+}
+
+.back-container div h4 {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.back-container button {
+  padding: 10px 40px;
+  border: 2px solid white;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  outline: none;
+  transition: all 800ms;
+}
+
+.back-container button:hover {
+  background: white;
+  color: rgba(197, 127, 35, 0.808);
+}
+
+.container-login-register {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  top: -185px;
+}
+
+.container-login-register form {
+  width: 100%;
+  padding:  80 px 20px;
+  background: #fff;
+  position: absolute;
+  border-radius: 20px;
+}
+
+.navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: white;
+}
+
+.pages {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.small-image {
+  width: 30px;
+  height: 43px;
+}
+
+.container {
+  padding: 43px 10px 0 10px;
+  display: flex;
+}
+
+.index-container {
+  width: 30%;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 600px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (min-width: 1100px) {
+  .index-container {
+    width: 15%;
+  }
+}
+
+.index {
+  position: sticky;
+  top: 48px;
+  background-color: #ededed;
+  border: 1px solid #cdd2d2;
+  border-radius: 18px;
+  text-align: left;
+  font-size: 15px;
+  padding: 10px 18px 10px 18px;
+  margin: 5px;
+}
+
+.index2 {
+  position: sticky;
+  top: 48px;
+  background-color: #ededed;
+  border: 1px solid #cdd2d2;
+  border-radius: 18px;
+  text-align: right;
+  font-size: 15px;
+  padding: 10px 18px 10px 18px;
+  margin: 5px;
+}
+
+.index h4 {
+  margin-bottom: 10px;
+}
+
+.index-list {
+  list-style-type: none;
+}
+
+.index-list li {
+  margin-bottom: 5px;
+}
+
+.content {
+  width: 70%;
+}
+
+@media (min-width: 1100px) {
+  .content {
+    width: 85%;
+  }
+}
+
+.section {
+  backdrop-filter: blur(5px);
+  background-color: #ededed;
+  border: 1px solid #cdd2d2;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  text-align: justify;
+  font-size: 18px;
+  padding: 48px 50px;
+  margin: 5px 0px;
+}
+
+.title-page {
+  text-align: center;
+}
+
+.section-title {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.content-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.desciption-figure {
+  font-size: 18px;
+  font-family: "Open Sans";
+  text-align: center;
+}
+
+.footer {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bibliography-list li {
+  margin-bottom: 5px;
+  word-break: break-word;
+}
+
+.map-circle-popup {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.map-circle-popup-title {
+  font-weight: bold;
+}

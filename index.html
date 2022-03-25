@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tinos&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>GEOPORTAL WEB</title>
+  </head>
+  <body class="general-background">
+    <header>
+      <nav class="navigation-bar">
+        <ul class="pages">
+          <li><a href="loginregister.html">Signup</a></li>
+          <li><a href="geovisor.html">Geovisor</a></li>
+          <li>
+            <a href="hojadevida.html">Hoja de Vida</a>
+          </li>
+        </ul>
+        <img
+          src="imagenes\logouv.PNG"
+          class="small-image"
+          alt="Logo Univalle"
+        />
+      </nav>
+    </header>
+    <main class="container">
+      <div class="index-container">
+        <nav class="index">
+          <h4>CONTENIDO</h4>
+          <ol class="index-list">
+            <li><a href="#Introducción">1. INTRODUCCIÓN</a></li>
+            <li>
+              <a href="#Marco teórico y conceptual"
+                >2. MARCO TEÓRICO Y CONCEPTUAL</a
+              >
+            </li>
+            <li>
+              <a href="#Plantamiento del problema"
+                >3. PLANTEAMIENTO DEL PROBLEMA</a
+              >
+            </li>
+            <li>
+              <a href="#Justificación y zona de estudio"
+                >4. JUSTIFICACIÓN Y ZONA DE ESTUDIO</a
+              >
+            </li>
+            <li><a href="#Antecedentes">5. ANTECEDENTES</a></li>
+            <li><a href="#Metodología">6. METODOLOGÍA</a></li>
+            <li><a href="#Bibliografía">7. BIBLIOGRAFÍA</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content">
+        <section class="section">
+          <h1 class="title-page">GEOPORTAL WEB</h1>
+        </section>
+        <section id="Introducción" class="section">
+          <h2 class="section-title">1. INTRODUCCIÓN</h2>
+          <p>
+            La contaminación atmosférica es la presencia que existe en el aire
+            de pequeñas partículas o productos secundarios gaseosos que pueden
+            implicar riesgo, daño o molestia para las personas, plantas y
+            animales que se encuentran expuestas a dicho ambiente. La
+            concentración de material particulado en Cali en algunas ocasiones
+            ha superado los niveles permisibles, en esa situación, se recomienda
+            evitar efectuar actividades al aire libre interrumpiendo el estilo
+            de vida de las personas que tienen acceso a dicha información y
+            perjudicando la salud de las personas que ignorar el fenómeno.
+          </p>
+        </section>
+        <section id="Marco teórico y conceptual" class="section">
+          <h2 class="section-title">2. MARCO TEÓRICO Y CONCEPTUAL</h2>
+          <h3 id="Base de datos">2.1. Base de Datos.</h3>
+          <p>
+            Una base de datos es un conjunto de datos que pertenecen a un mismo
+            contexto y se almacenan sistemáticamente para un posterior
+            procesamiento. (Oracle, s.f.) lo define como una recopilación
+            organizada de información, que normalmente se almacena de forma
+            electrónica y que es gestionada por algún tipo de sistema
+            informático.
+          </p>
+          <h3 id="Computación en la nube">2.2. Computación en la Nube</h3>
+          <p>
+            (Chai, 2021) la define como cualquier cosa que implique la
+            prestación de servicios a través de internet, los cuales se dividen
+            en tres categorías. La infraestructura incluye todos los componentes
+            de hardware y software, y puede prestar servicios de manera privada
+            o pública a través de una conexión a la red de internet que enlaza
+            el front end (cliente, navegador, red y aplicaciones de software en
+            la nube) con el back end (repositorio de almacenamiento de datos).
+          </p>
+          <h3 id="Material particulado">2.3. Material Particulado</h3>
+          <p>
+            Suárez, 2012) expone que el material particulado es un conjunto de
+            elementos sólidos y líquidos emitidos directamente al aire, entre
+            los que se encuentra el hollín de Diesel, polvo de suelos agrícolas,
+            partículas residuales de procesos de combustión. La principal
+            característica de este contaminante es que no sedimenta en periodos
+            de tiempo cortos permaneciendo suspendido en una compleja mezcla de
+            productos químicos y elementos biológicos que interactúan entre sí.
+          </p>
+          <h3 id="Modelo de dispersión atmosférica">
+            Modelo de Dispersión Atmosférica
+          </h3>
+          <p>
+            (Morales, 2006) señala que la concentración de un contaminante
+            atmosférico esta determinada por diferentes variables que actúan
+            como fuentes o sumideros, es decir, un balance de masa donde se
+            tienen en cuenta las emisiones y remociones. Por tanto, los modelos
+            de dispersión son herramientas computacionales que resuelven dicho
+            balance con cualquier método u aproximación.
+          </p>
+        </section>
+        <section id="Plantamiento del problema" class="section">
+          <h2 class="section-title">3. PLANTEAMIENTO DEL PROBLEMA</h2>
+          <p>
+            Actualmente en Cali existe el departamento administrativo de gestión
+            del medio ambiente (DAGMA) dentro del cual se encuentra el grupo de
+            gestión de calidad del aire, en sus objetivos está monitorear y
+            reportar permanentemente el comportamiento de contaminantes
+            atmosféricos a través de la administración de un sistema de
+            vigilancia de calidad del aire llamado SVASC.
+          </p>
+          <p>
+            La red cuenta con nueve nodos distribuidos en la ciudad y se puede
+            observar el área de influencia de cada nodo por medio de un
+            geovisor. También se puede acceder a información sobre contaminantes
+            haciendo clic en las estaciones en donde se puede constatar que las
+            variables monitoreadas no son las mismas en todos los puntos y la
+            información se presenta en gráficos de concentración contra tiempo.
+            Lo anterior expuesto presenta una situación problemática ya que
+            sobre la información no se hace un análisis ni un procesamiento que
+            permita a un usuario no especializado entender y poder tomar
+            decisiones basado en la herramienta.
+          </p>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img1.JPG"
+              alt="Sistema de Vigilancia de Calidad del Aire de Santiago de Cali (2021)."
+              title="Sistema de Vigilancia de Calidad del Aire de Santiago de Cali (2021)."
+            />
+            <figcaption>
+              Figura 1. Sistema de Vigilancia de Calidad del Aire de Santiago de
+              Cali (2021).
+            </figcaption>
+          </figure>
+        </section>
+        <section id="Justificación y zona de estudio" class="section">
+          <h2 class="section-title">4. JUSTIFICACIÓN Y ZONA DE ESTUDIO</h2>
+          <p>
+            Cali está ubicada en el departamento del Valle del Cauca, el casco
+            urbano se encuentra confinado al oriente por el río Cauca y por el
+            occidente con los Farallones de Cali, formación rocosa más joven de
+            la Cordillera Occidental de los Andes según (Parques nacionales
+            naturales de Colombia., 2021), al norte limita con el municipio de
+            yumbo y al sur con Jamundí. Consta de una superficie de 560.300
+            hectáreas de las cuales solo el 21.24% corresponden al perímetro
+            urbano, pero en el cual convergen el 99.6% de la población. El
+            (DANE, 2019) reportó que en Cali hay un millón ochocientas veintidós
+            mil ochocientos setenta y un (1.822.871) personas de los cuales
+            70.7% es población entre los 15 y 64 años.
+          </p>
+          <p>
+            Cali se ha configurado como el eje del suroccidente colombiano,
+            tanto así, que se ha desarrollado la tesis de Cali ciudad región
+            ampliada, que se plantea desde la hipótesis de integralidad de la
+            planificación territorial. (Juber Galeano Loaiza, 2019) expone que
+            la economía del Valle del Cauca aportó a la nacional el 9.83% en el
+            año 2012, de donde se pudo observar una concentración en el valor de
+            Cali aportando el 47.8% del producto departamental, lo cual
+            significa que la producción departamental se localiza
+            específicamente alrededor del área metropolitana de Cali. (Juber
+            Galeano Loaiza, 2019) también plantea que en Cali se pueden
+            diferenciar cinco (5) sectores en donde se soporta la estructura
+            productiva que son: agricultura, industria manufacturera, comercio,
+            transporte y telecomunicaciones de los cuales el 20% del PIB
+            municipal se sustenta en la industria manufacturera. Con respecto al
+            transporte (FULECOL, 2018) estimó que en la ciudad los vehículos
+            livianos y motocicletas representan 92% de los volúmenes aforados.
+          </p>
+          <p>
+            Lo anterior ha propiciado que de la mano del desarrollo se esté
+            presentando un detrimento ambiental, al respecto, la concejal
+            (Cedeño, 2020) dice que el 71.61% de las emisiones que contaminan el
+            aire de Cali corresponden a material particulado, también expone que
+            durante los periodos 2016 y 2017 se tuvo un registro de 5.957 y
+            6.477 hospitalizaciones por enfermedades respiratorias agudas,
+            argumentando que se puede establecer una relación directa entre el
+            deterioro gradual del aire y el aumento del número de complicaciones
+            y enfermedades respiratorias en los caleños. Por su parte el
+            concejal (Gómez, 2020) planteó que, en términos de recursos, por
+            calidad del aire, el impacto supera los 2.7 billones de pesos que
+            equivale al 5.1% del PIB de la ciudad. Según (Cali, 2020) el actual
+            plan de desarrollo 2020 – 2023 contempla implementar un modelo de la
+            calidad del aire para Cali, sin embargo la actual herramienta no
+            permite tener un panorama claro de las situaciones que se presentan
+            y mucho menos de la magnitud y alcance de estas, es por ello que se
+            plantea la pregunta, ¿Cómo puede implementarse una herramienta web
+            de bajo costo para el monitoreo y gestión del material particulado
+            en Cali?
+          </p>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img2.JPG"
+              alt="Distribución de empresas por comuna en Santiago de Cali."
+              title="Distribución de empresas por comuna en Santiago de Cali."
+            />
+            <figcaption>
+              Figura 2. Distribución de empresas por comuna en Santiago de Cali.
+            </figcaption>
+          </figure>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img3.JPG"
+              alt="Distribución vehicular en Santiago de Cali."
+              title="Distribución vehicular en Santiago de Cali."
+            />
+            <figcaption>
+              Figura 3. Distribución vehicular en Santiago de Cali.
+            </figcaption>
+          </figure>
+          <p>
+            Según (Cali, 2020) el actual plan de desarrollo 2020 – 2023
+            contempla implementar un modelo de la calidad del aire para Cali,
+            sin embargo la actual herramienta no permite tener un panorama claro
+            de las situaciones que se presentan y mucho menos de la magnitud y
+            alcance de estas, es por ello que se plantea la pregunta, ¿Cómo
+            puede implementarse una herramienta web de bajo costo para el
+            monitoreo y gestión del material particulado en Cali?
+          </p>
+        </section>
+        <section id="Antecedentes" class="section">
+          <h2 class="section-title">5. ANTECEDENTES</h2>
+          <p>
+            (Meo Vincent Caya, 2017) utilizó un nodo compuesto por un sensor de
+            material particulado (Sharp GP2Y1010AU0F) y un sensor de gases
+            (MQ-7) controlados por un microprocesador Arduino el cual enviaba
+            los datos a una Raspberry Pi para su procesamiento y este
+            dispositivo a través de una aplicación enviaba correos de alerta a
+            las autoridades y los usuarios registrados en la aplicación, si los
+            niveles de los contaminantes censados superan los niveles
+            permitidos. Adicionalmente la aplicación tiene una interfaz gráfica
+            de usuario (GUI) que permite agregar un correo electrónico para
+            registrarlo en la base de datos para posteriormente enviar alertas.
+            El estudio fue realizado en el Barangay 836 zona 91, en donde se
+            ensambló el hardware, los autores concluyeron que el sistema provee
+            un mecanismo de envió de datos inalámbrico a través de un sistema
+            IoT que propaga la información cuando los niveles exceden los
+            límites tolerables.
+          </p>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img4.JPG"
+              alt="Marco conceptual del sistema."
+              title="Marco conceptual del sistema."
+            />
+            <figcaption>Figura 4. Marco conceptual del sistema.</figcaption>
+          </figure>
+          <p>
+            (Puneet Kalia, 2020) propone el montaje de tres sensores, el BME280
+            es uno de temperatura y humedad, el MQ-135 es uno de gases y el
+            PMS5003 es un sensor de material particulado. Todo se encuentra
+            conectado a un microcontrolador ESP8266 el cual cuenta con módulo
+            WIFI que admite la conectividad para comunicar el nodo, con la base
+            de datos y el algoritmo de desarrollo de datos analiticos, lo que
+            permite el análisis y procesamiento de datos en vivo de manera
+            online.
+          </p>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img6.JPG"
+              alt="Integración IOT."
+              title="Integración IOT."
+            />
+            <figcaption>Figura 5. Integración IOT.</figcaption>
+          </figure>
+          <p>
+            Por su parte (Jaeseok Yun, 2021) propone una red de monitoreo de
+            material particulado con sensores de bajo costo cuyos nodos están
+            conectados inalámbricamente vía LoRa, los datos capturados son
+            almacenados en un servidor configurado con un estándar máquina a
+            máquina (M2M) llamado Mobius. El sistema de respaldo está basado en
+            un modelo de clústeres para predecir los valores de material
+            particulado en el caso de que algunos nodos no funcionen
+            correctamente debido a la pérdida de conectividad de la red o cortes
+            de energía.
+          </p>
+          <figure class="desciption-figure">
+            <img
+              class="content-image"
+              src="imagenes\img7.JPG"
+              alt="Arquitectura de todo el sistema propuesto."
+              title="Arquitectura de todo el sistema propuesto."
+            />
+            <figcaption>
+              Figura 6. Arquitectura de todo el sistema propuesto.
+            </figcaption>
+          </figure>
+          <p>
+            El experimento se realizó en el campus de la universidad
+            Soonchunhyang e involucró 15 nodos cuidadosamente instalados
+            guardando una distancia máxima de 2 kilómetros para proveer una
+            conexión LoRa óptima. En conclusión la implementación de un sistema
+            de monitoreo de estas características es una opción viable que puede
+            proporcionar una forma estandarizada de acceso a datos de material
+            particulado, con software de código abierto.
+          </p>
+        </section>
+        <section id="Metodología" class="section">
+          <h2>6. METODOLOGÍA</h2>
+        </section>
+        <div id="Bibliografía" class="section">
+          <h2 class="section-title">7. BIBLIOGRAFÍA</h2>
+          <ul class="bibliography-list">
+            <li>
+              Arjonilla, R. (2021). Rafa Arjonilla. Obtenido de Backend:
+              https://rafarjonilla.com/que-es/backend/.
+            </li>
+            <li>
+              Cali, C. S. (30 de noviembre de 2020). Concejo Santiago de Cali.
+              Obtenido de Calidad del aire causa más muertes en Cali que el
+              covid, las motos las que más contaminan.:
+              http://www.concejodecali.gov.co/Publicaciones/calidad_del_aire_causa_mas_muertes_en_cali_que_el_covid_las_motos_las_que_mas_contaminan.
+            </li>
+            <li>
+              Cedeño, A. H. (30 de noviembre de 2020). Concejo Santiago de Cali.
+              Obtenido de Calidad del aire causa más muertes en Cali que el
+              covid, las motos las que más contaminan.:
+              http://www.concejodecali.gov.co/Publicaciones/calidad_del_aire_causa_mas_muertes_en_cali_que_el_covid_las_motos_las_que_mas_contaminan.
+            </li>
+            <li>
+              Chai, W. (Mayo de 2021). ComputerWeekly. Obtenido de Computación
+              en la nube:
+              https://www.computerweekly.com/es/definicion/Computacion-en-la-nube.
+            </li>
+            <li>
+              DANE. (11 de julio de 2019). Resultados censo nacional de
+              población y vivienda 2018. Obtenido de DANE:
+              https://www.dane.gov.co/files/censo2018/informacion-tecnica/presentaciones-territorio/190711-CNPV-presentacion-valle.pdf.
+            </li>
+            <li>
+              FULECOL, F. s. (2018). Informe final actualización del inventario
+              de emisiones de Santiago de Cali. Cali: Corporación autónoma
+              regional del Valle del Cauca.
+            </li>
+            <li>
+              Gómez, T. H. (30 de noviembre de 2020). Concejo Santiago de Cali.
+              Obtenido de Calidad e aire cuasa más muertes en Cali que el covid,
+              las motos las que m{as contaminan.:
+              calidad_del_aire_causa_mas_muertes_en_cali_que_el_covid_las_motos_las_que_mas_contaminan.
+            </li>
+            <li>
+              IDEAM. (s.f.). IDEAM. Obtenido de CALIDAD DEL AIRE:
+              http://www.ideam.gov.co/web/contaminacion-y-calidad-ambiental/calidad-del-aire.
+            </li>
+            <li>
+              Jaeseok Yun, J. W. (2021). IoT-Enabled particulate matter
+              monitoring and forcasting method based on cluster analysis. IEEE
+              Internet of things journal, 7380-7393.
+            </li>
+            <li>
+              Juan Desongles Corrales, E. A. (2006). Técnicos de soporte
+              informático de la comunidad autónoma de Castilla y León. En E. A.
+              Juan Desongles Corrales, Técnicos de soporte informático de la
+              comunidad autónoma de Castilla y León (pág. 312). Sevilla: MAD.
+            </li>
+            <li>
+              Juber Galeano Loaiza, F. U.-G. (2019). Cali ciudad - región
+              ampliada. Un territorio metropolitano. En F. U.-G. Juber Galeano
+              Loaiza, Cali ciudad - región ampliada. Un territorio
+              metropolitano. (págs. 106, 134, 135, 161.). Cali, Colombia:
+              Editorial Bonaventuriana universidad de San Buenaventura,
+              Universidad del Valle programa editorial.
+            </li>
+            <li>
+              Julian Pérez Porto, M. M. (2009). Definicion. Obtenido de
+              Bluetooth: https://definicion.de/bluetooth/.
+            </li>
+            <li>
+              Leonel G. Corona Ramírez, G. S. (2014). Sensores y actuadores
+              aplicaciones con Arduino. En G. S. Leonel G. Corona Ramírez,
+              Sensores y actuadores aplicaciones con Arduino (pág. 17).
+              Azcapotzalco, México D.F.: Grupo editorial Patria.
+            </li>
+            <li>
+              Meo Vincent Caya, A. B. (2017). Air pollution and particulate
+              matter detector using raspberry pi with IoT based notification.
+              IEEE.
+            </li>
+            <li>
+              Ministerio de Ambiente, V. y. (5 de junio de 2008). Resolución
+              número 909. Colombia.
+            </li>
+            <li>
+              Morales, R. G. (2006). Contaminación atmosférica urbana. En R. G.
+              Morales, Episodios criticos de contaminación ambiental en la
+              ciudad de Santoago. (págs. 91-93). Santiago de Chile: Editirial
+              Universitaria.
+            </li>
+            <li>
+              NeoAttack. (s.f.). NeoAttack. Obtenido de Front end:
+              https://neoattack.com/neowiki/front-end/.
+            </li>
+            <li>
+              Oracle. (s.f.). Oracle. Obtenido de ¿Que es una base de datos?:
+              https://www.oracle.com/co/database/what-is-database/.
+            </li>
+            <li>
+              Oracle. (s.f.). Oracle. Obtenido de ¿Que es el IoT?:
+              https://www.oracle.com/co/internet-of-things/what-is-iot/.
+            </li>
+            <li>
+              Parques nacionales naturales de Colombia. (23 de octubre de 2021).
+              Obtenido de Parque nacional natural Farallones de Cali.:
+              https://www.parquesnacionales.gov.co/portal/es/ecoturismo/parques/region-pacifico/parque-nacional-natural-farallones-de-cali/.
+            </li>
+            <li>
+              Puneet Kalia, M. A. (2020). IOT based air quality and particulate
+              matter concentration minitoring system. Materials Today:
+              Proceeedings.
+            </li>
+            <li>
+              Red Hat. (s.f.). Red Hat. Obtenido de ¿Que son las API y para qué
+              sirven?:
+              https://www.redhat.com/es/topics/api/what-are-application-programming-interfaces#:~:text=Una%20API%20es%20un%20conjunto,de%20saber%20c%C3%B3mo%20est%C3%A1n%20implementados.
+            </li>
+            <li>
+              Sony Corporation. (2012). SONY guía de ayuda. Obtenido de ¿Qué es
+              la tecnología inalámbrica BLUETOOTH?:
+              http://download.sony-europe.com/pub/manuals/html/Z002678111/ES/contents/02/01/01/01.html.
+            </li>
+            <li>
+              Suárez, C. A. (2012). Diagnostico y control de material
+              particulado: Partículas suspendidas totales y fracción respirable
+              PM10. Luna Azul, 195-213.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="section footer">
+        <div>
+          <p>Fecha de publicación 11/11/2021</p>
+          <p>Última modificación 14/11/2021</p>
+          <p>© 2021 Luis Miguel Jiménez Castro - 1610090.</p>
+        </div>
+        <img
+          src="imagenes\logouv.PNG"
+          class="small-image"
+          alt="Logo Univalle"
+        />
+      </div>
+    </footer>
+  </body>
+</html>

@@ -23,7 +23,7 @@ const updateDb = (
     columnCondition,
     conditionValue
   ) => {
-    db.any(`SELECT ${columnName2Query} FROM ${tableName} WHERE ${columnCondition} = ${conditionValue} ;`)
+    db.any(`SELECT ${columnName2Query} FROM ${tableName} WHERE ${columnCondition} = '${conditionValue}' ;`)
       .then(function (data) {
         console.log("DATA:", data);
       })

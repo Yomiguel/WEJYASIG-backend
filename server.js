@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
+const dotenv = require("dotenv");
 const { queryDb, updateDb } = require("./data_base/managment_data_base");
 const router = express.Router;
 
@@ -38,7 +39,6 @@ app.get("/api/stations", async (req, res) => {
 
   const formattedStationsData = formatStationsData(allStationsData);
   const sendData2Db = formattedStationsData.map(data => {
-    console.log('U_U');
     updateDb("estaciones", "pm25", data["pm2.5"], "cod", data.station);
     updateDb("estaciones", "aqi", data.aqi, "cod", data.station);
   });
