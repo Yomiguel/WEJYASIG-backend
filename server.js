@@ -16,10 +16,9 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const port = 5000;
 
-app.listen(port, function () {
-  console.log("Your app is listening on port " + port);
+app.listen(process.env.PORT, function () {
+  console.log("Your app is listening on port " + process.env.PORT);
 });
 
 const fetchStationData = async () => {
