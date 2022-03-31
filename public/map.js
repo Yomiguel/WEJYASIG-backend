@@ -7,7 +7,7 @@ const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const wms = L.tileLayer
-  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
+  .wms("https://44.201.124.186:8080/geoserver/sigwebII/wms", {
     layers: "barrios",
     styles: "pol2",
     format: "image/png",
@@ -16,7 +16,7 @@ const wms = L.tileLayer
   .addTo(map);
 
 const wms2 = L.tileLayer
-  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
+  .wms("https://44.201.124.186:8080/geoserver/sigwebII/wms", {
     layers: "estaciones",
     format: "image/png",
     transparent: true,
@@ -42,7 +42,7 @@ function onMapClick(e) {
 
 map.on("click", onMapClick);
 
-const API_URL = "http://localhost:5000/api/stations";
+const API_URL = "/api/stations";
 
 /*const fetchAllStations = async () => {
   const response = await fetch(API_URL);
