@@ -11,10 +11,12 @@ require("dotenv").config();
 
 const { formatStationsData } = require("./controllers/stationsController");
 const { Column } = require("pg-promise");
+const res = require("express/lib/response");
 
 const app = express();
 
 app.use(cors());
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = 5000;
@@ -30,8 +32,20 @@ const fetchStationData = async () => {
   return allData;
 };
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html")
+});
+
+app.get("/geovisor", (req, res) => {
+  res.sendFile(__dirname + "/views/geovisor.html")
+});
+
+app.get("/hojadevida", (req, res) => {
+  res.sendFile(__dirname + "/views/hojadevida.html")
+});
+
 app.get("/signup", (req, res) => {
-  res.sendFile(__dirname + "/view/signup.html");
+  res.sendFile(__dirname + "/views/loginregister.html");
 });
 
 app.get("/api/stations", async (req, res) => {

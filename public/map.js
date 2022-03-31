@@ -15,34 +15,36 @@ const wms = L.tileLayer
   })
   .addTo(map);
 
-var popup = L.popup();
+const wms2 = L.tileLayer
+  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
+    layers: "estaciones",
+    format: "image/png",
+    transparent: true,
+  })
+  .addTo(map);
+
+const popup = L.popup();
 
 function onMapClick(e) {
   popup.setLatLng(e.latlng);
   popup
-    .setLatLng(e.latlng) // Sets the geographical point where the popup will open.
+    .setLatLng(e.latlng)
     .setContent(
       "Has seleccionado la coordenada:<br> " +
         e.latlng.lat.toString() +
         "," +
         e.latlng.lng.toString()
-    ) // Sets the HTML content of the popup.
-    .openOn(map); // Adds the popup to the map and closes the previous one.+
+    )
+    .openOn(map);
   const coords = { lat: e.latlng.lat, lon: e.latlng.lng };
   return coords;
 }
 
 map.on("click", onMapClick);
 
-/*const wms2 = L.tileLayer.wms("http://localhost:8080/geoserver/sigwebII/wms", {
-    layers: 'estaciones',
-    format: 'image/png',
-    transparent: false,
-}).addTo(map);*/
+const API_URL = "http://localhost:5000/api/stations";
 
-/*const API_URL = "http://localhost:5000/api/stations";
-
-const fetchAllStations = async () => {
+/*const fetchAllStations = async () => {
   const response = await fetch(API_URL);
   return response.json();
 };

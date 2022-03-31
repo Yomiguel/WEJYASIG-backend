@@ -1,4 +1,4 @@
-const { calculateAQI, calculateConcentration, getColor } = require("../aqi");
+const { calculateAQI, calculateConcentration, getColor } = require("../js/aqi");
 
 const stationsIds = require("../data/stationsId.json");
 
