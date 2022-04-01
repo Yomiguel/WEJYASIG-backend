@@ -1,0 +1,40 @@
+.index-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 30%;
+  padding: 0 30px;
+}
+
+.index-content {
+  width: 100%;
+}
+
+.index-title {
+  font-size: 32px;
+  line-height: 40px;
+  margin-bottom: 50px;
+}
+
+.index-navigation {
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+}
+
+.index-item {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+  word-break: break-word;
+}
+
+.index-item a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.index-item a:hover {
+  text-decoration: underline;
+}

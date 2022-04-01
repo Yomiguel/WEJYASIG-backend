@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Tinos&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@300&display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,45 +18,41 @@
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
     ></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/map.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
     <title>GEOVISOR</title>
   </head>
-  <body class="general-background">
-    <header>
-      <nav class="navigation-bar">
-        <ul class="pages">
-          <li><a href="/">Pagina Principal</a></li>
-          <li>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <img
+          src="imagenes/logouv.PNG"
+          class="navbar-logo"
+          alt="Logo Univalle"
+        />
+        <ul class="navigation">
+          <li class="navbar-item"><a href="/">Pagina Principal</a></li>
+          <li class="navbar-item">
             <a href="/hojadevida">Hoja de Vida</a>
           </li>
         </ul>
-        <img
-          src="imagenes\logouv.PNG"
-          class="small-image"
-          alt="Logo Univalle"
-        />
       </nav>
     </header>
     <main class="container">
-      <div class="content">
-        <section class="section">
-          <div id="map" style="width: 1800px; height: 600px"></div>
-          <script src="/map.js"></script>
-        </section>
+      <div class="map-container">
+        <div id="map" style="width: 100%; height: 100%"></div>
+        <script src="/map.js"></script>
       </div>
     </main>
-    <footer>
-      <div class="section footer">
+    <footer class="footer">
+      <div class="footer-info">
         <div>
           <p>Fecha de publicación 11/11/2021</p>
           <p>Última modificación 14/11/2021</p>
-          <p>© 2021 Luis Miguel Jiménez Castro - 1610090.</p>
         </div>
-        <img
-          src="imagenes\logouv.PNG"
-          class="small-image"
-          alt="Logo Univalle"
-        />
+        <p>© 2021 Luis Miguel Jiménez Castro - 1610090.</p>
       </div>
     </footer>
   </body>

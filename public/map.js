@@ -7,7 +7,7 @@ const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const wms = L.tileLayer
-  .wms("https://44.201.124.186:8080/geoserver/sigwebII/wms", {
+  .wms("https://52.90.136.189:8080/geoserver/sigwebII/wms", {
     layers: "barrios",
     styles: "pol2",
     format: "image/png",
@@ -16,7 +16,7 @@ const wms = L.tileLayer
   .addTo(map);
 
 const wms2 = L.tileLayer
-  .wms("https://44.201.124.186:8080/geoserver/sigwebII/wms", {
+  .wms("https://52.90.136.189:8080/geoserver/sigwebII/wms", {
     layers: "estaciones",
     format: "image/png",
     transparent: true,
@@ -42,41 +42,41 @@ function onMapClick(e) {
 
 map.on("click", onMapClick);
 
-const API_URL = "/api/stations";
+// const API_URL = "/api/stations";
 
-/*const fetchAllStations = async () => {
-  const response = await fetch(API_URL);
-  return response.json();
-};
+// const fetchAllStations = async () => {
+//   const response = await fetch(API_URL);
+//   return response.json();
+// };
 
-const renderPopUp = (station) =>
-  `<div class="map-circle-popup">
-    <div>
-      <span class="map-circle-popup-title">AQI:</span> 
-      ${Math.round(station.data.aqi)}
-    </div>
-    <div>
-      <span class="map-circle-popup-title">PM 2.5</span>: 
-      ${station.data.pm25}μg/m³
-    </div>
-  </div>`;
+// const renderPopUp = (station) =>
+//   `<div class="map-circle-popup">
+//     <div>
+//       <span class="map-circle-popup-title">AQI:</span>
+//       ${Math.round(station.data.aqi)}
+//     </div>
+//     <div>
+//       <span class="map-circle-popup-title">PM 2.5</span>:
+//       ${station.data.pm25}μg/m³
+//     </div>
+//   </div>`;
 
-const renderMainStationCircles = (stations) => {
-  stations.forEach((station) => {
-    const point = L.circle(station.location, { radius: 500 }).addTo(map);
-    point.setStyle({
-      color: "black",
-      opacity: 0.8,
-      fillColor: station.color,
-      fillOpacity: 0.8,
-    });
-    point.bindTooltip(renderPopUp(station));
-  });
-};
+// const renderMainStationCircles = (stations) => {
+//   stations.forEach((station) => {
+//     const point = L.circle(station.location, { radius: 500 }).addTo(map);
+//     point.setStyle({
+//       color: "black",
+//       opacity: 0.8,
+//       fillColor: station.color,
+//       fillOpacity: 0.8,
+//     });
+//     point.bindTooltip(renderPopUp(station));
+//   });
+// };
 
-const main = async () => {
-  const allStations = await fetchAllStations();
-  renderMainStationCircles(allStations.main);
-};
+// const main = async () => {
+//   const allStations = await fetchAllStations();
+//   renderMainStationCircles(allStations.main);
+// };
 
-main();*/
+// main();
