@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+ol,
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  padding-top: 70px;
+  min-height: calc(100vh - 140px);
+  max-height: 100vh;
+}
