@@ -1,3 +1,5 @@
+const API_URL = "/api/stations";
+
 const map = L.map("map").setView([3.4, -76.523913], 12.45);
 
 const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
@@ -42,41 +44,8 @@ function onMapClick(e) {
 
 map.on("click", onMapClick);
 
-// const API_URL = "/api/stations";
+const fetchAllStations = () => {
+  fetch(API_URL);
+};
 
-// const fetchAllStations = async () => {
-//   const response = await fetch(API_URL);
-//   return response.json();
-// };
-
-// const renderPopUp = (station) =>
-//   `<div class="map-circle-popup">
-//     <div>
-//       <span class="map-circle-popup-title">AQI:</span>
-//       ${Math.round(station.data.aqi)}
-//     </div>
-//     <div>
-//       <span class="map-circle-popup-title">PM 2.5</span>:
-//       ${station.data.pm25}μg/m³
-//     </div>
-//   </div>`;
-
-// const renderMainStationCircles = (stations) => {
-//   stations.forEach((station) => {
-//     const point = L.circle(station.location, { radius: 500 }).addTo(map);
-//     point.setStyle({
-//       color: "black",
-//       opacity: 0.8,
-//       fillColor: station.color,
-//       fillOpacity: 0.8,
-//     });
-//     point.bindTooltip(renderPopUp(station));
-//   });
-// };
-
-// const main = async () => {
-//   const allStations = await fetchAllStations();
-//   renderMainStationCircles(allStations.main);
-// };
-
-// main();
+fetchAllStations();
