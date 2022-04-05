@@ -2,20 +2,16 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-const dotenv = require("dotenv");
-const { queryDb, updateDb } = require("./data_base/managment_data_base");
-
-require("dotenv").config();
-
-const { formatStationsData } = require("./controllers/stationsController");
 const { Column } = require("pg-promise");
+
+const { queryDb, updateDb } = require("./data_base/managment_data_base");
+const { formatStationsData } = require("./controllers/stationsController");
 
 const app = express();
 
 app.use(cors());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + process.env.PORT);
@@ -48,14 +44,12 @@ app.get("/api/stations", async (req, res) => {
   const allStationsData = await fetchStationData();
 
   const formattedStationsData = formatStationsData(allStationsData);
-  const sendData2Db = formattedStationsData.map((data) => {
+  formattedStationsData.forEach((data) => {
     updateDb("estaciones", "pm25", data["pm2.5"], "cod", data.station);
     updateDb("estaciones", "aqi", data.aqi, "cod", data.station);
   });
+
   res.json({
     main: formattedStationsData,
   });
 });
-
-//updateDb("estaciones", "aqi", 15, "cod", `D29TTGOT7A0DDA`);
-//queryDb("pm25", "estaciones", "cod", `'D29TTGOT7D4D7A'`);

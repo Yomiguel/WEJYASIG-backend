@@ -4,62 +4,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Tinos&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/content.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
     <title>GEOPORTAL WEB</title>
   </head>
-  <body class="general-background">
-    <header>
-      <nav class="navigation-bar">
-        <ul class="pages">
-          <li><a href="/signup">Signup</a></li>
-          <li><a href="/geovisor">Geovisor</a></li>
-          <li>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <img
+          src="/imagenes/logouv.png"
+          class="navbar-logo"
+          alt="Logo Univalle"
+        />
+        <ul class="navigation">
+          <li class="navbar-item"><a href="/signup">Signup</a></li>
+          <li class="navbar-item"><a href="/geovisor">Geovisor</a></li>
+          <li class="navbar-item">
             <a href="/hojadevida">Hoja de Vida</a>
           </li>
         </ul>
-        <img
-          src="imagenes\logouv.PNG"
-          class="small-image"
-          alt="Logo Univalle"
-        />
       </nav>
     </header>
     <main class="container">
       <div class="index-container">
-        <nav class="index">
-          <h4>CONTENIDO</h4>
-          <ol class="index-list">
-            <li><a href="#Introducción">1. INTRODUCCIÓN</a></li>
-            <li>
-              <a href="#Marco teórico y conceptual"
-                >2. MARCO TEÓRICO Y CONCEPTUAL</a
-              >
-            </li>
-            <li>
-              <a href="#Plantamiento del problema"
-                >3. PLANTEAMIENTO DEL PROBLEMA</a
-              >
-            </li>
-            <li>
-              <a href="#Justificación y zona de estudio"
-                >4. JUSTIFICACIÓN Y ZONA DE ESTUDIO</a
-              >
-            </li>
-            <li><a href="#Antecedentes">5. ANTECEDENTES</a></li>
-            <li><a href="#Metodología">6. METODOLOGÍA</a></li>
-            <li><a href="#Bibliografía">7. BIBLIOGRAFÍA</a></li>
-          </ol>
-        </nav>
+        <div class="index-content">
+          <h4 class="index-title">CONTENIDO</h4>
+          <nav class="index-navigation">
+            <ol class="index-list">
+              <li class="index-item">
+                1.<a href="#Introducción">INTRODUCCIÓN</a>
+              </li>
+              <li class="index-item">
+                2.<a href="#Marco teórico y conceptual"
+                  >MARCO TEÓRICO Y CONCEPTUAL</a
+                >
+              </li>
+              <li class="index-item">
+                3.<a href="#Plantamiento del problema"
+                  >PLANTEAMIENTO DEL PROBLEMA</a
+                >
+              </li>
+              <li class="index-item">
+                4.<a href="#Justificación y zona de estudio"
+                  >JUSTIFICACIÓN Y ZONA DE ESTUDIO</a
+                >
+              </li>
+              <li class="index-item">
+                5.<a href="#Antecedentes">ANTECEDENTES</a>
+              </li>
+              <li class="index-item">
+                6.<a href="#Metodología">METODOLOGÍA</a>
+              </li>
+              <li class="index-item">
+                7.<a href="#Bibliografía">BIBLIOGRAFÍA</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
       </div>
       <div class="content">
-        <section class="section">
-          <h1 class="title-page">GEOPORTAL WEB</h1>
-        </section>
-        <section id="Introducción" class="section">
-          <h2 class="section-title">1. INTRODUCCIÓN</h2>
+        <h1 class="content-title">GEOPORTAL WEB</h1>
+        <section id="Introducción" class="content-section">
+          <h2 class="content-section-title">INTRODUCCIÓN</h2>
           <p>
             La contaminación atmosférica es la presencia que existe en el aire
             de pequeñas partículas o productos secundarios gaseosos que pueden
@@ -72,8 +84,8 @@
             perjudicando la salud de las personas que ignorar el fenómeno.
           </p>
         </section>
-        <section id="Marco teórico y conceptual" class="section">
-          <h2 class="section-title">2. MARCO TEÓRICO Y CONCEPTUAL</h2>
+        <section id="Marco teórico y conceptual" class="content-section">
+          <h2 class="content-section-title">MARCO TEÓRICO Y CONCEPTUAL</h2>
           <h3 id="Base de datos">2.1. Base de Datos.</h3>
           <p>
             Una base de datos es un conjunto de datos que pertenecen a un mismo
@@ -115,8 +127,8 @@
             balance con cualquier método u aproximación.
           </p>
         </section>
-        <section id="Plantamiento del problema" class="section">
-          <h2 class="section-title">3. PLANTEAMIENTO DEL PROBLEMA</h2>
+        <section id="Plantamiento del problema" class="content-section">
+          <h2 class="content-section-title">PLANTEAMIENTO DEL PROBLEMA</h2>
           <p>
             Actualmente en Cali existe el departamento administrativo de gestión
             del medio ambiente (DAGMA) dentro del cual se encuentra el grupo de
@@ -137,7 +149,7 @@
             permita a un usuario no especializado entender y poder tomar
             decisiones basado en la herramienta.
           </p>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img1.JPG"
@@ -150,8 +162,8 @@
             </figcaption>
           </figure>
         </section>
-        <section id="Justificación y zona de estudio" class="section">
-          <h2 class="section-title">4. JUSTIFICACIÓN Y ZONA DE ESTUDIO</h2>
+        <section id="Justificación y zona de estudio" class="content-section">
+          <h2 class="content-section-title">JUSTIFICACIÓN Y ZONA DE ESTUDIO</h2>
           <p>
             Cali está ubicada en el departamento del Valle del Cauca, el casco
             urbano se encuentra confinado al oriente por el río Cauca y por el
@@ -204,7 +216,7 @@
             de bajo costo para el monitoreo y gestión del material particulado
             en Cali?
           </p>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img2.JPG"
@@ -215,7 +227,7 @@
               Figura 2. Distribución de empresas por comuna en Santiago de Cali.
             </figcaption>
           </figure>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img3.JPG"
@@ -236,8 +248,8 @@
             monitoreo y gestión del material particulado en Cali?
           </p>
         </section>
-        <section id="Antecedentes" class="section">
-          <h2 class="section-title">5. ANTECEDENTES</h2>
+        <section id="Antecedentes" class="content-section">
+          <h2 class="content-section-title">ANTECEDENTES</h2>
           <p>
             (Meo Vincent Caya, 2017) utilizó un nodo compuesto por un sensor de
             material particulado (Sharp GP2Y1010AU0F) y un sensor de gases
@@ -255,7 +267,7 @@
             IoT que propaga la información cuando los niveles exceden los
             límites tolerables.
           </p>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img4.JPG"
@@ -274,7 +286,7 @@
             permite el análisis y procesamiento de datos en vivo de manera
             online.
           </p>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img6.JPG"
@@ -294,7 +306,7 @@
             correctamente debido a la pérdida de conectividad de la red o cortes
             de energía.
           </p>
-          <figure class="desciption-figure">
+          <figure>
             <img
               class="content-image"
               src="imagenes\img7.JPG"
@@ -315,12 +327,12 @@
             particulado, con software de código abierto.
           </p>
         </section>
-        <section id="Metodología" class="section">
-          <h2>6. METODOLOGÍA</h2>
+        <section id="Metodología" class="content-section">
+          <h2 class="content-section-title">METODOLOGÍA</h2>
         </section>
-        <div id="Bibliografía" class="section">
-          <h2 class="section-title">7. BIBLIOGRAFÍA</h2>
-          <ul class="bibliography-list">
+        <div id="Bibliografía" class="content-section">
+          <h2 class="content-section-title">BIBLIOGRAFÍA</h2>
+          <ul class="content-bibliography">
             <li>
               Arjonilla, R. (2021). Rafa Arjonilla. Obtenido de Backend:
               https://rafarjonilla.com/que-es/backend/.
@@ -447,18 +459,13 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div class="section footer">
+    <footer class="footer">
+      <div class="footer-info">
         <div>
           <p>Fecha de publicación 11/11/2021</p>
           <p>Última modificación 14/11/2021</p>
-          <p>© 2021 Luis Miguel Jiménez Castro - 1610090.</p>
         </div>
-        <img
-          src="imagenes\logouv.PNG"
-          class="small-image"
-          alt="Logo Univalle"
-        />
+        <p>© 2021 Luis Miguel Jiménez Castro - 1610090.</p>
       </div>
     </footer>
   </body>
