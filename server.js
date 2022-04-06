@@ -3,7 +3,7 @@ const db = require("./data_base/dbconexion.js");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-const { Column } = require("pg-promise");
+const pgp = require("pg-promise")();
 
 const { queryDb, updateDb } = require("./data_base/managment_data_base");
 const { formatStationsData } = require("./controllers/stationsController");
@@ -14,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + process.env.PORT);
@@ -52,7 +53,13 @@ app.get("/api/stations", async () => {
   });
 });
 
-app.post("/data", (req, res) => {
-  console.log(req.body);
-  //db.none(`UPDATE datos SET latitud = ${coords.lat}';`);
+app.post("/api/data", (req, res) => {
+  const latitud = req.body.lat;
+  const longitud = req.body.lon;
+  db.any(`DELETE FROM datos;`);
+  db.any(
+    `INSERT INTO datos(latitud, longitud) VALUES('${latitud}', '${longitud}');`
+  );
 });
+
+//db.none(`INSERT INTO datos (latitud, longitud) ;`);

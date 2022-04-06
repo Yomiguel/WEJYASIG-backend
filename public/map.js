@@ -1,5 +1,5 @@
 const API_URL = "/api/stations";
-const API_DATA = "/data";
+const API_DATA = "/api/data";
 
 const map = L.map("map").setView([3.4, -76.523913], 12.45);
 
@@ -41,7 +41,7 @@ function onMapClick(e) {
     .openOn(map);
   const latitud = e.latlng.lat;
   const longitud = e.latlng.lng;
-  const coords = { "lat": latitud, "lon": longitud };
+  const coords = { lat: latitud, lon: longitud };
   console.log(coords);
   fetch(API_DATA, {
     method: "POST",
