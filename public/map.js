@@ -1,4 +1,5 @@
 const API_URL = "/api/stations";
+const API_DATA = "/data";
 
 const map = L.map("map").setView([3.4, -76.523913], 12.45);
 
@@ -9,7 +10,7 @@ const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const wms = L.tileLayer
-  .wms("localhost/geoserver/sigwebII/wms", {
+  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
     layers: "barrios",
     styles: "pol2",
     format: "image/png",
@@ -18,7 +19,7 @@ const wms = L.tileLayer
   .addTo(map);
 
 const wms2 = L.tileLayer
-  .wms("https://localhost:8080/geoserver/sigwebII/wms", {
+  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
     layers: "estaciones",
     format: "image/png",
     transparent: true,
@@ -38,8 +39,17 @@ function onMapClick(e) {
         e.latlng.lng.toString()
     )
     .openOn(map);
-  const coords = { lat: e.latlng.lat, lon: e.latlng.lng };
-  return coords;
+  const latitud = e.latlng.lat;
+  const longitud = e.latlng.lng;
+  const coords = { "lat": latitud, "lon": longitud };
+  console.log(coords);
+  fetch(API_DATA, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(coords),
+  });
 }
 
 map.on("click", onMapClick);

@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("./data_base/dbconexion.js");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
@@ -6,6 +7,7 @@ const { Column } = require("pg-promise");
 
 const { queryDb, updateDb } = require("./data_base/managment_data_base");
 const { formatStationsData } = require("./controllers/stationsController");
+const { response } = require("express");
 
 const app = express();
 
@@ -40,7 +42,7 @@ app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/views/loginregister.html");
 });
 
-app.get("/api/stations", async (req, res) => {
+app.get("/api/stations", async () => {
   const allStationsData = await fetchStationData();
 
   const formattedStationsData = formatStationsData(allStationsData);
@@ -48,8 +50,9 @@ app.get("/api/stations", async (req, res) => {
     updateDb("estaciones", "pm25", data["pm2.5"], "cod", data.station);
     updateDb("estaciones", "aqi", data.aqi, "cod", data.station);
   });
+});
 
-  res.json({
-    main: formattedStationsData,
-  });
+app.post("/data", (req, res) => {
+  console.log(req.body);
+  //db.none(`UPDATE datos SET latitud = ${coords.lat}';`);
 });
