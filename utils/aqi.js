@@ -58,3 +58,6 @@ const getColor = (aqi) => {
 };
 
 module.exports = { calculateAQI, calculateConcentration, getColor };
+
+
+

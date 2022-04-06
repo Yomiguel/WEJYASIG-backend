@@ -37,3 +37,6 @@ const queryDb = (
 //queryDb("pm25", "estaciones", "cod", `'D29TTGOT7D4D7A'`);
 
 module.exports = { queryDb, updateDb };
+
+
+
