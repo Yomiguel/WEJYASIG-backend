@@ -64,9 +64,11 @@ app.post("/api/data", (req, res) => {
 
 app.get("/api/send", async (req, res) => {
   try {
-    const response = await db.any(`SELECT pm25 FROM datos ;`);
-    return res.json(response);
+    const responsePm25 = await db.any(`SELECT pm25 FROM datos ;`);
+    const responseAqi = await db.any(`SELECT aqi FROM datos ;`);
+    const query = [responsePm25[0],responseAqi[0]];
+    return res.json(query);
   } catch (error) {
-      console.log("ERROR:", error);
+    console.log("ERROR:", error);
   }
 });
