@@ -62,4 +62,12 @@ app.post("/api/data", (req, res) => {
   );
 });
 
-//db.none(`INSERT INTO datos (latitud, longitud) ;`);
+app.get("/api/send", (req, res) => {
+  db.any(`SELECT pm25 FROM datos ;`)
+    .then( (data) => {
+      return res.json(data);
+    })
+    .catch( (error) => {
+      console.log("ERROR:", error);
+    });
+});
