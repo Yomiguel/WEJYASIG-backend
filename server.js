@@ -62,12 +62,11 @@ app.post("/api/data", (req, res) => {
   );
 });
 
-app.get("/api/send", (req, res) => {
-  db.any(`SELECT pm25 FROM datos ;`)
-    .then( (data) => {
-      return res.json(data);
-    })
-    .catch( (error) => {
+app.get("/api/send", async (req, res) => {
+  try {
+    const response = await db.any(`SELECT pm25 FROM datos ;`);
+    return res.json(response);
+  } catch (error) {
       console.log("ERROR:", error);
-    });
+  }
 });

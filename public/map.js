@@ -29,7 +29,7 @@ const wms2 = L.tileLayer
 
 const popup = L.popup();
 
-function onMapClick(e) {
+async function onMapClick(e) {
   popup.setLatLng(e.latlng);
   popup
     .setLatLng(e.latlng)
@@ -50,10 +50,9 @@ function onMapClick(e) {
     },
     body: JSON.stringify(coords),
   });
-  const dato = async () => {
-    const de = await fetch(API_SEND);
-    console.log(de);
-  };
+  const response = await fetch(API_SEND);
+  const data = await response.json();
+  console.log(data);
 }
 
 map.on("click", onMapClick);
