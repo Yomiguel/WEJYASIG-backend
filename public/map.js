@@ -47,14 +47,14 @@ const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
 const wms = L.tileLayer
   .wms("http://54.226.99.175:8080/geoserver/sigwebII/wms", {
     layers: "barrios",
-    styles: "pol2",
+    //styles: "pol2",
     format: "image/png",
     transparent: true,
   })
   .addTo(map);
 
 const wms2 = L.tileLayer
-  .wms("http://localhost:8080/geoserver/sigwebII/wms", {
+  .wms("http://54.226.99.175:8080/geoserver/sigwebII/wms", {
     layers: "estaciones",
     format: "image/png",
     transparent: true,
